@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let a = 0;
+  let b = 0;
+  if (a === b) {
+    console.log('===');
+  }else if (a > b) {
+    console.log(a);
+  }else if (b > a) {
+    console.log(b);
+  }
+// /-------------------------------------------/
+  let x = 0;
+  if (! !!0) {
+    x = 'default'
+  }
+  console.log(x);
+  let x1 = null;
+  if (! !!null) {
+    x = 'default'
+  }
+  console.log(x1);
+  let x2 = undefined;
+  if (! !!undefined) {
+    x = 'default'
+  }
+  console.log(x2);
+  let x3 = NaN;
+  if (! !!NaN) {
+    x = 'default'
+  }
+  console.log(x3);
+  let x4 = 'ok';
+  if (! !!'ok') {
+    x = 'default'
+  }
+  console.log(x4);
+// /--------------------------------------------/
+  let coursesAndDurationArray = [
+    {title: 'JavaScript Complex', monthDuration: 5},
+    {title: 'Java Complex', monthDuration: 6},
+    {title: 'Python Complex', monthDuration: 6},
+    {title: 'QA Complex', monthDuration: 4},
+    {title: 'FullStack', monthDuration: 7},
+    {title: 'Frontend', monthDuration: 4}
+  ];
+  if (coursesAndDurationArray[0].monthDuration > 5) {
+    console.log('super');
+  }
+  if (coursesAndDurationArray[1].monthDuration > 5) {
+    console.log('super');
+  }
+  if (coursesAndDurationArray[2].monthDuration > 5) {
+    console.log('super');
+  }
+  if (coursesAndDurationArray[3].monthDuration > 5) {
+    console.log('super');
+  }
+  if (coursesAndDurationArray[4].monthDuration > 5) {
+    console.log('super');
+  }
+  if (coursesAndDurationArray[5].monthDuration > 5) {
+    console.log('super');
+  }
+</script>
+</body>
+</html>
