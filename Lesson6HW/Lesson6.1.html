@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let str1 = 'hello world';
+    console.log(str1.length);
+    let str2 = 'lorem ipsum';
+    console.log(str2.length);
+    let str3 = 'javascript is cool';
+    console.log(str3.length);
+//     ----------------------------------
+    const strings = [str1, str2, str3];
+    for (const str of strings){
+        console.log(str.toUpperCase())
+    }
+//     ----------------------------------
+    let str4 = 'HELLO WORLD';
+    let str5 = 'LOREM IPSUM';
+    let str6 = 'JAVASCRIPT IS COOL';
+    const strings1 = [str4, str5, str6];
+    for (const str of strings1){
+        console.log(str.toLowerCase())
+    }
+//     ----------------------------------
+    let str7 = ' dirty string   ';
+    console.log(str7.trim());
+//     ----------------------------------
+    function stringToArray(str) {
+         const split = str.split(' ');
+         return split;
+    }
+    console.log(stringToArray('Ревуть воли як ясла повні'));
+//     ----------------------------------
+    const arr = [10,8,-7,55,987,-1011,0,1050,0];
+    const strings2 = arr.map(number => number + '');
+    console.log(strings2);
+//     ----------------------------------
+    function sortNums (array,direction) {
+        if (direction === 'ascending') {
+            return array.sort((a,b) => a-b);
+            } else if (direction === 'descending') {
+            return array.sort((a,b) => b-a);
+        }
+    }
+    let nums = [11,21,3];
+    console.log(sortNums(nums, 'ascending'));
+    console.log(sortNums(nums, 'descending'));
+//     ----------------------------------
+    let coursesAndDurationArray = [
+        {title: 'JavaScript Complex', monthDuration: 5},
+        {title: 'Java Complex', monthDuration: 6},
+        {title: 'Python Complex', monthDuration: 6},
+        {title: 'QA Complex', monthDuration: 4},
+        {title: 'FullStack', monthDuration: 7},
+        {title: 'Frontend', monthDuration: 4}
+        ];
+    let sort = coursesAndDurationArray.sort((a, b) => b.monthDuration - a.monthDuration);
+    let filter = sort.filter(value => value.monthDuration > 5);
+    let map = filter.map((value, index) => { return {id:index+1,title:value.title,monthDuration:value.monthDuration}});
+    console.log(map);
+//     ----------------------------------
+    const suits = ['spade', 'diamond', 'heart', 'clubs'];
+    const values = ['6', '7', '8', '9', '10', 'jack', 'queen', 'king', 'ace'];
+    const cards = [];
+    for (const suit of suits) {
+        for (const value of values) {
+        const card = {cardSuit: suit, value: value};
+        if (suit === 'heart' || suit === 'diamond') {
+        card.color = 'red';
+        }else {
+        card.color = 'black';
+        }
+        cards.push(card);
+        }
+    }
+    console.log(cards)
+    console.log(cards.find(card => card.value === 'ace' && card.cardSuit === 'spade'));
+    console.log(cards.filter(card => card.value === '6'));
+    console.log(cards.filter(card => card.color === 'red'));
+    console.log(cards.filter(card => card.cardSuit === 'diamond'));
+    console.log(cards.filter(card => card.cardSuit === 'clubs' && !['6', '7', '8'].includes(card.value)));
+</script>
+</body>
+</html>
