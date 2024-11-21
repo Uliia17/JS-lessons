@@ -1,8 +1,5 @@
 function cloner(obj) {
-    if (obj === undefined || obj === null || Number.isNaN(obj)) {
-        return obj;
-    }
-    if (obj) {
+        if (obj) {
         let functions = [];
         for (const key in obj) {
             if (typeof obj[key] === 'function') {
@@ -17,7 +14,7 @@ function cloner(obj) {
         console.log(cloneObject);
         return cloneObject;
     }
-    return false;
+    throw new Error('!!!!!');
 }
 const clone = cloner({ id: 1, name: "John", age: undefined, address: null, score: NaN, foo() { console.log('client'); } });
 clone.foo();
