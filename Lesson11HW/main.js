@@ -2,71 +2,137 @@ fetch('https://dummyjson.com/carts')
     .then(response => response.json())
     .then(data => {
         const container = document.createElement('div');
-        for (let i = 0; i < data.carts.length; i++) {
-            const cart = data.carts[i];
+        data.carts.forEach(cart => {
             const cartDiv = document.createElement('div');
-            cartDiv.innerHTML = `
-        <h2>Cart ID: ${cart.id}</h2>
-        <p>User ID: ${cart.userId}</p>
-        <p>Total Products: ${cart.totalProducts}</p>
-        <p>Total Quantity: ${cart.totalQuantity}</p>
-        <p>Total: ${cart.total}</p>
-        <p>Discounted Total: ${cart.discountedTotal}</p>
-        <h3>Products:</h3>
-      `;
-            for (let j = 0; j < cart.products.length; j++) {
-                const product = cart.products[j];
+
+            const cartId = document.createElement('h2');
+            cartId.textContent = `Cart ID: ${cart.id}`;
+            cartDiv.appendChild(cartId);
+
+            const userId = document.createElement('p');
+            userId.textContent = `User ID: ${cart.userId}`;
+            cartDiv.appendChild(userId);
+
+            const totalProducts = document.createElement('p');
+            totalProducts.textContent = `Total Products: ${cart.totalProducts}`;
+            cartDiv.appendChild(totalProducts);
+
+            const totalQuantity = document.createElement('p');
+            totalQuantity.textContent = `Total Quantity: ${cart.totalQuantity}`;
+            cartDiv.appendChild(totalQuantity);
+
+            const total = document.createElement('p');
+            total.textContent = `Total: ${cart.total}`;
+            cartDiv.appendChild(total);
+
+            const discountedTotal = document.createElement('p');
+            discountedTotal.textContent = `Discounted Total: ${cart.discountedTotal}`;
+            cartDiv.appendChild(discountedTotal);
+
+            const productsHeader = document.createElement('h3');
+            productsHeader.textContent = 'Products:';
+            cartDiv.appendChild(productsHeader);
+
+            cart.products.forEach(product => {
                 const productDiv = document.createElement('div');
-                productDiv.innerHTML = `
-          <p>Product ID: ${product.id}</p>
-          <p>Title: ${product.title}</p>
-          <p>Price: ${product.price}</p>
-          <p>Quantity: ${product.quantity}</p>
-          <p>Total: ${product.total}</p>
-          <p>Discount Percentage: ${product.discountPercentage}</p>
-          <p>Discounted Total: ${product.discountedTotal}</p>
-          <img src="${product.thumbnail}" alt="${product.title}">
-        `;
+
+                const productId = document.createElement('p');
+                productId.textContent = `Product ID: ${product.id}`;
+                productDiv.appendChild(productId);
+
+                const title = document.createElement('p');
+                title.textContent = `Title: ${product.title}`;
+                productDiv.appendChild(title);
+
+                const price = document.createElement('p');
+                price.textContent = `Price: ${product.price}`;
+                productDiv.appendChild(price);
+
+                const quantity = document.createElement('p');
+                quantity.textContent = `Quantity: ${product.quantity}`;
+                productDiv.appendChild(quantity);
+
+                const productTotal = document.createElement('p');
+                productTotal.textContent = `Total: ${product.total}`;
+                productDiv.appendChild(productTotal);
+
+                const discountPercentage = document.createElement('p');
+                discountPercentage.textContent = `Discount Percentage: ${product.discountPercentage}`;
+                productDiv.appendChild(discountPercentage);
+
+                const discountedTotal = document.createElement('p');
+                discountedTotal.textContent = `Discounted Total: ${product.discountedTotal}`;
+                productDiv.appendChild(discountedTotal);
+
+                const thumbnail = document.createElement('img');
+                thumbnail.src = product.thumbnail;
+                thumbnail.alt = product.title;
+                productDiv.appendChild(thumbnail);
+
                 cartDiv.appendChild(productDiv);
-            }
+            });
+
             container.appendChild(cartDiv);
-        }
+        });
         document.body.appendChild(container);
     })
     .catch(error => console.error('Error fetching carts:', error));
+
 // -------------------------------------------------------------
 fetch('https://dummyjson.com/recipes')
     .then(response => response.json())
     .then(data => {
         const block = document.createElement('div');
-        for (let i = 0; i < data.recipes.length; i++) {
-            const recipe = data.recipes[i];
+        data.recipes.forEach(recipe => {
             const recipeDiv = document.createElement('div');
-            recipeDiv.innerHTML = `
-        <h2>${recipe.name}</h2>
-        <p><strong>Cuisine:</strong> ${recipe.cuisine}</p>
-        <p><strong>Difficulty:</strong> ${recipe.difficulty}</p>
-        <p><strong>Preparation time:</strong> ${recipe.prepTimeMinutes} хвилин</p>
-        <p><strong>Cook time:</strong> ${recipe.cookTimeMinutes} хвилин</p>
-        <p><strong>Servings:</strong> ${recipe.servings}</p>
-        <p><strong>Calories:</strong> ${recipe.caloriesPerServing}</p>
-        <h3>Ingredients:</h3>
-      `;
-            const ingredients = document.createElement('ul');
+
+            const recipeName = document.createElement('h2');
+            recipeName.textContent = recipe.name;
+            recipeDiv.appendChild(recipeName);
+
+            const cuisine = document.createElement('p');
+            cuisine.innerHTML = `<strong>Cuisine:</strong> ${recipe.cuisine}`;
+            recipeDiv.appendChild(cuisine);
+
+            const difficulty = document.createElement('p');
+            difficulty.innerHTML = `<strong>Difficulty:</strong> ${recipe.difficulty}`;
+            recipeDiv.appendChild(difficulty);
+
+            const prepTime = document.createElement('p');
+            prepTime.innerHTML = `<strong>Preparation time:</strong> ${recipe.prepTimeMinutes} хвилин`;
+            recipeDiv.appendChild(prepTime);
+
+            const cookTime = document.createElement('p');
+            cookTime.innerHTML = `<strong>Cook time:</strong> ${recipe.cookTimeMinutes} хвилин`;
+            recipeDiv.appendChild(cookTime);
+
+            const servings = document.createElement('p');
+            servings.innerHTML = `<strong>Servings:</strong> ${recipe.servings}`;
+            recipeDiv.appendChild(servings);
+
+            const calories = document.createElement('p');
+            calories.innerHTML = `<strong>Calories:</strong> ${recipe.caloriesPerServing}`;
+            recipeDiv.appendChild(calories);
+
+            const ingredientsHeader = document.createElement('h3');
+            ingredientsHeader.textContent = 'Ingredients:';
+            recipeDiv.appendChild(ingredientsHeader);
+
+            const ingredientsList = document.createElement('ul');
             recipe.ingredients.forEach(ingredient => {
                 const item = document.createElement('li');
                 item.textContent = ingredient;
-                ingredients.appendChild(item);
+                ingredientsList.appendChild(item);
             });
-            recipeDiv.appendChild(ingredients);
+            recipeDiv.appendChild(ingredientsList);
 
-            const instructions = document.createElement('ul');
+            const instructionsList = document.createElement('ul');
             recipe.instructions.forEach(instruction => {
                 const item = document.createElement('li');
                 item.textContent = instruction;
-                instructions.appendChild(item);
+                instructionsList.appendChild(item);
             });
-            recipeDiv.appendChild(instructions);
+            recipeDiv.appendChild(instructionsList);
 
             const image = document.createElement('img');
             image.src = recipe.image;
@@ -74,9 +140,10 @@ fetch('https://dummyjson.com/recipes')
             recipeDiv.appendChild(image);
 
             block.appendChild(recipeDiv);
-        }
+        });
         document.body.appendChild(block);
     })
     .catch(error => console.error('Error fetching recipes:', error));
+
 
 
